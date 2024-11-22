@@ -1,6 +1,6 @@
 <main class="main">
     <div class="up-arrow" title="Наверх" id="up-arrow" (click)="scrollTo(header)">↑</div>
-    <div class="currency" title="Изменить валюту" id="change-currency">$</div>
+    <div class="currency" title="Изменить валюту" id="change-currency" (click)="changeCurrency()">{{currency}}</div>
 
     <header class="header" id="header" #header>
         <div class="container">
@@ -55,7 +55,7 @@
                         <div class="products-item-text">{{product.text}}</div>
                         <div class="products-item-extra">
                             <div class="products-item-info">
-                                <div class="products-item-price">{{product.price}} $</div>
+                                <div class="products-item-price">{{product.price}} {{currency}}</div>
                                 <div class="products-item-weight">{{product.weight}}</div>
                             </div>
                             <button class="button violet-button" (click)="scrollTo(order)">Заказать</button>
