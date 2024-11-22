@@ -118,8 +118,11 @@ export class AppComponent {
 
   };
 
-  scrollTo(target: HTMLElement) {
+  scrollTo(target: HTMLElement, product?: any) {
     target.scrollIntoView({behavior: 'smooth'});
+    if (product) {
+      this.form.patchValue({product: product.title + ' (' + product.price + ' ' + this.currency + ')'});
+    }
   };
 
   changeCurrency() {
