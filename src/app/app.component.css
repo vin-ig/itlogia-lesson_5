@@ -319,3 +319,7 @@
     top: -920px;
     left: 0;
 }
+
+.order-form-inputs input.error {
+  border-color: red;
+}

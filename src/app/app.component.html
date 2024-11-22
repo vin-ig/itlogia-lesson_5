@@ -97,11 +97,11 @@
                         и окунитесь
                         в мир сладких наслаждений.
                     </div>
-                    <div class="order-form-inputs">
-                        <input type="text" placeholder="Выберите печенье" id="product">
-                        <input type="text" placeholder="Ваше имя" id="name">
-                        <input type="text" placeholder="Ваш телефон" id="phone">
-                        <button class="button violet-button" id="order-action">Оформить заказ</button>
+                    <div class="order-form-inputs" [formGroup]="form">
+                        <input type="text" placeholder="Выберите печенье" id="product" formControlName="product"[class]="{'error': form.get('product')?.invalid && (form.get('product')?.dirty || form.get('product')?.touched)}">
+                        <input type="text" placeholder="Ваше имя" id="name" formControlName="name"[class]="{'error': form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)}">
+                        <input type="text" placeholder="Ваш телефон" id="phone" formControlName="phone"[class]="{'error': form.get('phone')?.invalid && (form.get('phone')?.dirty || form.get('phone')?.touched)}">
+                        <button class="button violet-button" id="order-action" (click)="confirmOrder()" [disabled]="!form.valid">Оформить заказ</button>
                     </div>
                 </div>
                 <div class="order-block-image">

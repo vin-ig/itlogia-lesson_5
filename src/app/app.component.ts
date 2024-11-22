@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -107,9 +108,19 @@ export class AppComponent {
     },
   ];
 
+  form = this.fb.group({
+    product: ['', Validators.required],
+    name: ['', Validators.required],
+    phone: ['', Validators.required],
+  });
+
+  constructor(private fb: FormBuilder) {
+
+  };
+
   scrollTo(target: HTMLElement) {
     target.scrollIntoView({behavior: 'smooth'});
-  }
+  };
 
   changeCurrency() {
     let newCurrency = '$';
@@ -134,5 +145,13 @@ export class AppComponent {
     this.productsData.forEach((item: any) => {
       item.price = +(item.basePrice * coefficient).toFixed(1)
     });
-  }
+  };
+
+  confirmOrder() {
+    if (this.form.valid) {
+      alert(`${this.form.value.name}, спасибо за заказ! Мы свяжемся с вами!`);
+      this.form.reset();
+    };
+  };
+
 }

@@ -40,7 +40,13 @@ body {
     cursor: pointer;
 }
 
-.button:hover {
+.button:disabled {
+  cursor: not-allowed;
+  color: gray;
+  background-color: #343434;
+}
+
+.button:hover:not(:disabled) {
     background-color: #eeeeee;
 }
 
@@ -49,7 +55,7 @@ body {
     color: white;
 }
 
-.button.violet-button:hover {
+.button.violet-button:hover:not(:disabled) {
     background-color: #3b2cd8;
 }
 
