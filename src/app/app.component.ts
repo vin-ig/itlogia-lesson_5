@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -114,7 +115,7 @@ export class AppComponent {
     phone: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private http: HttpClient) {
 
   };
 
@@ -152,8 +153,16 @@ export class AppComponent {
 
   confirmOrder() {
     if (this.form.valid) {
-      alert(`${this.form.value.name}, спасибо за заказ! Мы свяжемся с вами!`);
-      this.form.reset();
+      this.http.post('https://testologia.ru/cookies-order', this.form.value)
+        .subscribe({
+          next: (response: any) => {
+            alert(response.message);
+            this.form.reset();
+          },
+          error: (response: any) => {
+            alert(response.error.message);
+          },
+        });
     };
   };
 
