@@ -33,6 +33,11 @@ export class AppComponent {
     }
   };
 
+  switchSugarFree(e: any) {
+    this.http.get(this.backend_url + "cookies" + (e.currentTarget.checked ? '?sugarfree' : ''))
+    .subscribe(data => this.productsData = data);
+};
+
   changeCurrency() {
     let newCurrency = '$';
     let coefficient = 1;
